@@ -1,0 +1,10 @@
+{
+    "en": {
+        "searchPlaceholder": "Search projects...",
+        "addProject": "Add Project"
+    },
+    "ar": {
+        "searchPlaceholder": "ابحث عن مشروع...",
+        "addProject": "إضافة مشروع"
+    }
+}
