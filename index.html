@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Portfolio Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --bg-color: #fff;
+            --text-color: #333;
+            --card-bg: #f9f9f9;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #fff;
+            --card-bg: #2d2d2d;
+        }
+
+        /* Loader Spinner */
+        .loader {
+            animation: spin 1s linear infinite;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* تحسينات الجريد والبطاقات */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            padding: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transform: translateY(0);
+            transition: 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* تحسين المودال */
+        .project-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            animation: modalFade 0.3s ease;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط البحث -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="ابحث عن مشروع...">
+        <i class="fas fa-search"></i>
+    </div>
+
+    <!-- إحصائيات المشاريع -->
+    <canvas id="projectsChart"></canvas>
+
+    <!-- بقية العناصر... -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script>
+// تحسين نظام التخزين مع الصور
+function convertImageToBase64(file) {
+    return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.readAsDataURL(file);
+    });
+}
+
+// نظام التقييم التفاعلي
+function createRatingStars(rating, projectId) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        stars += `<i class="fa-star ${i <= rating ? 'fas' : 'far'}" 
+                  data-rating="${i}" 
+                  data-project="${projectId}"></i>`;
+    }
+    return stars;
+}
+
+// نظام البحث في الوقت الحقيقي
+document.getElementById('searchInput').addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const filtered = projects.filter(p => 
+        p.title.toLowerCase().includes(searchTerm) || 
+        p.description?.toLowerCase().includes(searchTerm)
+    );
+    renderProjects('all', filtered);
+});
+
+// إحصائيات المشاريع مع Chart.js
+function renderProjectsChart() {
+    const ctx = document.getElementById('projectsChart').getContext('2d');
+    const types = ['wordpress', 'html', 'js'];
+    const counts = types.map(type => 
+        projects.filter(p => p.type === type).length
+    );
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: types,
+            datasets: [{
+                data: counts,
+                backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe']
+            }]
+        }
+    });
+}
+
+// Service Worker للتخزين المؤقت
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+                console.log('ServiceWorker registration successful');
+            });
+    });
+}
+
+// Swiper للعرض على الموبايل
+const initSwiper = () => {
+    new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        breakpoints: {
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+        }
+    });
+};
+
+// تحديث التقييمات
+document.body.addEventListener('click', (e) => {
+    if (e.target.classList.contains('fa-star')) {
+        const projectId = e.target.dataset.project;
+        const newRating = parseInt(e.target.dataset.rating);
+        
+        projects = projects.map(p => {
+            if (p.id == projectId) {
+                p.rating = newRating;
+            }
+            return p;
+        });
+        
+        localStorage.setItem('projects', JSON.stringify(projects));
+        renderProjects();
+    }
+});
+</script>
+</body>
+</html>
