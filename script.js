@@ -1,6 +1,4 @@
 let projects = JSON.parse(localStorage.getItem('projects')) || [
-  { title: 'مشروع 1', url: 'https://example.com/1', desc: 'وصف المشروع الأول' },
-  { title: 'مشروع 2', url: 'https://example.com/2', desc: 'وصف المشروع التاني' }
 ];
 
 // ترندر المشاريع
