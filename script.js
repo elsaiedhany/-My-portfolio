@@ -1,48 +1,35 @@
-let projects = JSON.parse(localStorage.getItem('projects')) || [
-];
-
-// ترندر المشاريع
-function render() {
-  const grid = document.getElementById('grid');
-  grid.innerHTML = '';
-  projects.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <h3>${p.title}</h3>
-      <p>${p.desc}</p>
-      <a href="${p.url}" target="_blank">شوف الموقع</a>
+let projs = JSON.parse(localStorage.getItem('projs'))||[];
+const grid = document.getElementById('grid');
+function render(){
+  grid.innerHTML='';
+  projs.forEach((p,i)=>{
+    const c = document.createElement('div'); c.className='card';
+    c.innerHTML=`
+      <h3>${p.t}</h3><p>${p.d}</p>
+      <a href="${p.u}" target="_blank">شوف الموقع</a>
+      ${isAdmin?`<button data-i="${i}" class="e">✏️</button>
+      <button data-i="${i}" class="x">🗑️</button>`:''}
     `;
-    grid.appendChild(card);
+    grid.append(c);
   });
-  localStorage.setItem('projects', JSON.stringify(projects));
+  localStorage.setItem('projs',JSON.stringify(projs));
 }
-
-// شوف لو في ?admin=true
-if (new URLSearchParams(window.location.search).get('admin') === 'true') {
-  document.getElementById('admin-form').style.display = 'block';
-  document.getElementById('add-btn').onclick = () => {
-    const t = document.getElementById('proj-title').value.trim();
-    const u = document.getElementById('proj-url').value.trim();
-    const d = document.getElementById('proj-desc').value.trim();
-    if (t && u) {
-      projects.push({ title: t, url: u, desc: d });
-      render();
-      // تفريغ الحقول
-      document.getElementById('proj-title').value = '';
-      document.getElementById('proj-url').value = '';
-      document.getElementById('proj-desc').value = '';
-    }
-  };
-}
-
-// smooth scroll
-document.querySelectorAll('nav a').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
-  });
+const isAdmin = new URLSearchParams(location.search).get('admin')==='true';
+if(isAdmin) document.getElementById('admin').style.display='block';
+document.getElementById('add')?.addEventListener('click',_=>{
+  const t=pt.value.trim(),u=pu.value.trim(),d=pd.value.trim();
+  if(t&&u){projs.push({t,u,d});pt.value=pu.value=pd.value='';render();}
 });
-
-// تشغيل التريندر أول مرة
+grid.addEventListener('click',e=>{
+  if(!isAdmin) return;
+  const i=+e.target.dataset.i;
+  if(e.target.classList.contains('x')){
+    projs.splice(i,1);render();
+  }
+  if(e.target.classList.contains('e')){
+    const p=projs[i];
+    const nt=prompt('عنوان جديد',p.t), nu=prompt('رابط جديد',p.u), nd=prompt('وصف جديد',p.d);
+    if(nt&&nu){projs[i]={t:nt,u:nu,d:nd||''};render();}
+  }
+});
 render();
