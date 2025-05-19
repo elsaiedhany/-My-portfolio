@@ -3,58 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>محفظة أعمال – سعيد</title>
+  <title>محفظة سعيد الاحترافية</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <nav>
-      <a href="#portfolio">الرئيسية</a>
-      <a href="#about">عنّي</a>
-      <a href="#contact">تواصل</a>
-    </nav>
-    <h1>سعيد – مطور ومصمم ووردبريس</h1>
-    <p>ببني مواقع حديثة باستخدام WordPress وElementor</p>
-  </header>
+  <nav class="navbar">
+    <a href="#hero">الرئيسية</a>
+    <a href="#about">عنّي</a>
+    <a href="#skills">مهاراتي</a>
+    <a href="#projects">مشاريعي</a>
+    <a href="#contact">تواصل</a>
+  </nav>
 
-  <!-- SECTION PORTFOLIO -->
-  <section id="portfolio">
-    <h2>أعمالي</h2>
-    <div class="grid" id="grid"></div>
+  <section id="hero" class="hero">
+    <h1>سعيد مطور ويب</h1>
+    <p>ببني مواقع احترافية بالـWordPress وElementor</p>
+  </section>
 
-    <!-- form أدمن بيظهر بس لو داخل على الرابط بـ ?admin=true -->
-    <div id="admin-form" class="admin-form" style="display:none">
-      <h3>أضف مشروع جديد</h3>
-      <input type="text" id="proj-title" placeholder="عنوان المشروع">
-      <input type="url" id="proj-url" placeholder="رابط الموقع">
-      <textarea id="proj-desc" placeholder="وصف قصير"></textarea>
-      <button id="add-btn">إضافة</button>
+  <section id="about" class="about">
+    <h2>عنّي</h2>
+    <p>طالب ثانوي ومطور مواقع، خبرة في HTML/CSS/JS وبشتغل على Upwork.</p>
+  </section>
+
+  <section id="skills" class="skills">
+    <h2>مهاراتي</h2>
+    <ul>
+      <li>WordPress & Elementor</li>
+      <li>HTML، CSS، JavaScript</li>
+      <li>Responsive Design</li>
+      <li>SEO Basics</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="projects">
+    <h2>مشاريعي</h2>
+    <div id="grid" class="grid"></div>
+
+    <!-- admin form -->
+    <div id="admin" class="admin" style="display:none">
+      <h3>لوحة التحكم</h3>
+      <input id="pt" placeholder="عنوان المشروع">
+      <input id="pu" placeholder="رابط الموقع">
+      <textarea id="pd" placeholder="وصف قصير"></textarea>
+      <button id="add">إضافة</button>
     </div>
   </section>
 
-  <!-- SECTION ABOUT -->
-  <section id="about">
-    <h2>عنّي</h2>
-    <p>أنا سعيد، طالب 3 ثانوي وبشتغل على WordPress وElementor.</p>
-    <p>عندي خبرة في HTML, CSS, JavaScript وبسعى أشتغل على Upwork وأزود دخلي.</p>
-  </section>
-
-  <!-- SECTION CONTACT -->
-  <section id="contact">
-    <h2>تواصل معايا</h2>
-    <form action="#" method="post">
-      <input type="text" name="name" placeholder="اسمك" required>
-      <input type="email" name="email" placeholder="ايميلك" required>
-      <textarea name="message" placeholder="رسالتك" required></textarea>
-      <button type="submit">إرسال</button>
+  <section id="contact" class="contact">
+    <h2>تواصل معي</h2>
+    <form>
+      <input placeholder="اسمك" required>
+      <input type="email" placeholder="إيميلك" required>
+      <textarea placeholder="رسالتك" required></textarea>
+      <button>إرسال</button>
     </form>
   </section>
 
-  <footer>
-    <p>© 2025 سعيد</p>
-  </footer>
-
+  <footer>© 2025 سعيد</footer>
   <script src="script.js"></script>
 </body>
 </html>
