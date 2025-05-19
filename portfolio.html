@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="My Work - Saeed's Portfolio" data-ar="أعمالي - معرض أعمال سعيد"></title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo" data-en="Saeed" data-ar="سعيد"></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية"></a></li>
+                    <li><a href="portfolio.html" class="nav-link" data-en="My Work" data-ar="أعمالي"></a></li>
+                    <li><a href="about.html" class="nav-link" data-en="About Me" data-ar="عني"></a></li>
+                    <li><a href="contact.html" class="nav-link" data-en="Contact" data-ar="تواصل معي"></a></li>
+                </ul>
+            </nav>
+            <div class="lang-switcher">
+                <button onclick="changeLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                <button onclick="changeLanguage('ar')" class="lang-btn" data-lang="ar">AR</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="portfolio-page">
+        <div class="container">
+            <h2 class="page-title" data-en="My Web Development Projects" data-ar="مشاريعي في تطوير الويب"></h2>
+            <div class="projects-list">
+                <div class="project-card">
+                    <h3 class="project-card-title" data-en="E-commerce Website" data-ar="موقع تجارة إلكترونية"></h3>
+                    <p class="project-card-description" data-en="Developed a responsive e-commerce platform using HTML, CSS, and interactive JavaScript features for product display and user experience." data-ar="قمت بتطوير منصة تجارة إلكترونية متجاوبة باستخدام HTML و CSS وميزات JavaScript تفاعلية لعرض المنتجات وتجربة المستخدم."></p>
+                    <ul class="project-tech-list">
+                        <li data-en="HTML" data-ar="HTML"></li>
+                        <li data-en="CSS" data-ar="CSS"></li>
+                        <li data-en="JavaScript" data-ar="JavaScript"></li>
+                    </ul>
+                    <a href="project-ecommerce.html" class="btn view-project-btn" data-en="View Details" data-ar="عرض التفاصيل"></a>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-card-title" data-en="Blog Platform Redesign" data-ar="إعادة تصميم منصة مدونة"></h3>
+                    <p class="project-card-description" data-en="Revamped an existing blog platform with a modern, clean design and improved accessibility, ensuring fast loading times." data-ar="قمت بتجديد منصة مدونة قائمة بتصميم عصري ونظيف وتحسين إمكانية الوصول، مع ضمان أوقات تحميل سريعة."></p>
+                    <ul class="project-tech-list">
+                        <li data-en="HTML" data-ar="HTML"></li>
+                        <li data-en="CSS" data-ar="CSS"></li>
+                        <li data-en="Wordpress (basic)" data-ar="ووردبريس (أساسي)"></li>
+                    </ul>
+                    <a href="project-blog.html" class="btn view-project-btn" data-en="View Details" data-ar="عرض التفاصيل"></a>
+                </div>
+                </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p data-en="&copy; 2025 Saeed. All rights reserved." data-ar="&copy; 2025 سعيد. جميع الحقوق محفوظة."></p>
+        </div>
+    </footer>
+
+    <script src="js/language.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            changeLanguage(localStorage.getItem('lang') || 'en');
+        });
+    </script>
+</body>
+</html>
