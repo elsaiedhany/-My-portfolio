@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Contact Me - Saeed's Portfolio" data-ar="تواصل معي - معرض أعمال سعيد"></title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo" data-en="Saeed" data-ar="سعيد"></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية"></a></li>
+                    <li><a href="portfolio.html" class="nav-link" data-en="My Work" data-ar="أعمالي"></a></li>
+                    <li><a href="about.html" class="nav-link" data-en="About Me" data-ar="عني"></a></li>
+                    <li><a href="contact.html" class="nav-link" data-en="Contact" data-ar="تواصل معي"></a></li>
+                </ul>
+            </nav>
+            <div class="lang-switcher">
+                <button onclick="changeLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                <button onclick="changeLanguage('ar')" class="lang-btn" data-lang="ar">AR</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="contact-page">
+        <div class="container">
+            <h2 class="page-title" data-en="Get in Touch" data-ar="تواصل معي"></h2>
+            <div class="contact-methods">
+                <p class="contact-text" data-en="Have a project in mind or just want to say hello? Feel free to reach out!" data-ar="هل لديك مشروع في ذهنك أو تريد فقط أن تقول مرحباً؟ لا تتردد في التواصل!"></p>
+                <ul class="contact-list">
+                    <li>
+                        <strong data-en="Email:" data-ar="البريد الإلكتروني:"></strong> 
+                        <a href="mailto:your.email@example.com" data-en="your.email@example.com" data-ar="بريدك_الإلكتروني@مثال.كوم"></a>
+                    </li>
+                    <li>
+                        <strong data-en="LinkedIn:" data-ar="لينكد إن:"></strong> 
+                        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" data-en="linkedin.com/in/yourprofile" data-ar="linkedin.com/in/ملفك_الشخصي"></a>
+                    </li>
+                    <li>
+                        <strong data-en="Upwork Profile:" data-ar="ملف Upwork:"></strong> 
+                        <a href="https://www.upwork.com/freelancers/~yourprofile" target="_blank" data-en="upwork.com/freelancers/~yourprofile" data-ar="upwork.com/freelancers/~ملفك_الشخصي"></a>
+                    </li>
+                    </ul>
+
+                <p class="contact-text" data-en="Looking forward to connecting with you!" data-ar="أتطلع للتواصل معك!"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p data-en="&copy; 2025 Saeed. All rights reserved." data-ar="&copy; 2025 سعيد. جميع الحقوق محفوظة."></p>
+        </div>
+    </footer>
+
+    <script src="js/language.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            changeLanguage(localStorage.getItem('lang') || 'en');
+        });
+    </script>
+</body>
+</html>
