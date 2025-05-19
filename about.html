@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="About Me - Saeed's Portfolio" data-ar="عني - معرض أعمال سعيد"></title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo" data-en="Saeed" data-ar="سعيد"></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية"></a></li>
+                    <li><a href="portfolio.html" class="nav-link" data-en="My Work" data-ar="أعمالي"></a></li>
+                    <li><a href="about.html" class="nav-link" data-en="About Me" data-ar="عني"></a></li>
+                    <li><a href="contact.html" class="nav-link" data-en="Contact" data-ar="تواصل معي"></a></li>
+                </ul>
+            </nav>
+            <div class="lang-switcher">
+                <button onclick="changeLanguage('en')" class="lang-btn" data-lang="en">EN</button>
+                <button onclick="changeLanguage('ar')" class="lang-btn" data-lang="ar">AR</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="about-page">
+        <div class="container">
+            <h2 class="page-title" data-en="About Me" data-ar="عني"></h2>
+            <div class="about-content">
+                <p data-en="Hello! I'm Saeed, a 19-year-old web enthusiast from Egypt." data-ar="مرحباً! أنا سعيد، شاب مصري يبلغ من العمر 19 عامًا، شغوف بعالم الويب."></p>
+                <p data-en="My journey into programming began with a deep love for creating things. I specialize in front-end development, crafting engaging and responsive user interfaces using **HTML, CSS, and JavaScript**." data-ar="بدأت رحلتي في البرمجة بحب عميق لإنشاء الأشياء. أتخصص في تطوير الواجهات الأمامية (Front-end)، حيث أقوم ببناء واجهات مستخدم جذابة ومتجاوبة باستخدام **HTML و CSS و JavaScript**."></p>
+                <p data-en="I also have experience with writing custom scripts and I'm currently expanding my skills in **WordPress and Elementor** to build powerful and flexible content management systems." data-ar="لديّ أيضًا خبرة في كتابة السكريبتات المخصصة، وأعمل حاليًا على توسيع مهاراتي في **ووردبريس وإليمنتور** لبناء أنظمة إدارة محتوى قوية ومرنة."></p>
+                <p data-en="My goal is to deliver high-quality, fast-loading websites that not only look great but also provide an excellent user experience." data-ar="هدفي هو تقديم مواقع ويب عالية الجودة وسريعة التحميل، لا تبدو رائعة فحسب، بل توفر أيضًا تجربة مستخدم ممتازة."></p>
+                <p data-en="Let's build something amazing together!" data-ar="دعنا نبني شيئًا مذهلاً معًا!"></p>
+            </div>
+
+            <section class="skills-section">
+                <h3 class="section-subtitle" data-en="My Skills" data-ar="مهاراتي"></h3>
+                <ul class="skills-list">
+                    <li data-en="HTML5" data-ar="HTML5"></li>
+                    <li data-en="CSS3" data-ar="CSS3"></li>
+                    <li data-en="JavaScript" data-ar="JavaScript"></li>
+                    <li data-en="Responsive Design" data-ar="تصميم متجاوب"></li>
+                    <li data-en="Web Performance Optimization" data-ar="تحسين أداء الويب"></li>
+                    <li data-en="WordPress (learning)" data-ar="ووردبريس (قيد التعلم)"></li>
+                    <li data-en="Elementor (learning)" data-ar="إليمنتور (قيد التعلم)"></li>
+                    <li data-en="Basic Scripting" data-ar="كتابة السكريبتات الأساسية"></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p data-en="&copy; 2025 Saeed. All rights reserved." data-ar="&copy; 2025 سعيد. جميع الحقوق محفوظة."></p>
+        </div>
+    </footer>
+
+    <script src="js/language.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            changeLanguage(localStorage.getItem('lang') || 'en');
+        });
+    </script>
+</body>
+</html>
